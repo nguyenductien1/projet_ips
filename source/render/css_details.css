@@ -1,0 +1,9 @@
+div.price_location h3{
+    display: inline-block;
+}
+div.price_location p{
+    display: inline-block;
+}
+div.price_location img{
+    display: inline-block;
+}

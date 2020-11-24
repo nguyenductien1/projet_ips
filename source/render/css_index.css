@@ -1,0 +1,18 @@
+/*Ranger les annonces */
+dev.container dev.row{
+    display: grid;
+    grid-template-areas: left right;
+}
+
+
+/*Les élément*/
+h3.titre_annonce{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+div.price_location h3{
+    display: inline-block;
+}
+div.price_location p{
+    display: inline-block;
+}
