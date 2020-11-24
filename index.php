@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -41,13 +42,7 @@ function derniers_annonces()
             return ("Not In France: "+ $address->country);
     }
     
-    ?>
-    <?php
-    $connect_class = new SQLiteConnection();    
-    $query_pseudo ='SELECT pseudo FROM users WHERE pseudo="admin3"'; 
-    var_dump($connect_class->check_database($query_pseudo));
-    ?>
-  
+    ?> 
     <div class="container-fluid">
         <div class="jumbotron row">
 
@@ -71,15 +66,29 @@ function derniers_annonces()
                     <button type="submit">Rechercher</button>
                 </form>
             </div>
+            <?php 
+            if (isset($_SESSION['username']) && $_SESSION['username']){
+                echo '<a href=personalise_page.php>'.$_SESSION['username'].'</a>'.
+                    '<form action="http://localhost/ProjetIPS/source/render/logout.php" method="post">
+                    <button type="submit">Déconnecter</button>
+                     </form>';
 
-            <div class="col-lg-2 col-sm-12">
+            }
+            else{
+                echo '<div class="col-lg-2 col-sm-12">
                 <form action="http://localhost/ProjetIPS/source/render/signup.php" method="get">
-                    <button type="submit">S'inscrire</button>
+                    <button type="submit">Inscrire</button>
                 </form>
-                <form action="http://localhost/ProjetIPS/source/render/signin.php" method="get">
+                <form action="http://localhost/ProjetIPS/source/render/login.php" method="get">
                     <button type="submit">Se connecter</button>
                 </form>
-            </div>
+                </div>';
+
+            }
+
+            ?>
+            
+            
 
         </div>
 

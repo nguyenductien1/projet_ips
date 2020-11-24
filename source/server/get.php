@@ -34,11 +34,12 @@ class SQLiteConnection {
 
     function check_database($variable_recherche){
         $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
-        $requet_sql = "SELECT pseudo FROM users WHERE pseudo='$variable_recherche'";
+        $requet_sql = "SELECT pseudo,mdp_hash FROM users WHERE pseudo='$variable_recherche'";
         $stm = $pdo_3->query($requet_sql);
         $row = $stm->fetch(PDO::FETCH_BOTH);
         return $row;
     }
+
 
 }
 
