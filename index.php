@@ -51,18 +51,18 @@ function derniers_annonces()
             </div>
 
             <div class="text-center col-lg-8 col-sm-12">
-                <form action="recherche_anonce" method="post">
+                <form action="http://localhost/ProjetIPS/source/render/recherche.php" method="post">
                     <label>Categories</label>
-                    <select name="hall" id="hall" value="3">
+                    <select name="recherche_categories" id="categories">
                         <option></option>
                         <option>decoration</option>
                         <option>automobile</option>
                         <option>cuisine</option>
                         <option>informatique</option>
-                        <option>téléphone</option>
+                        <option>telephonie</option>
                     </select>
-                    <input type="text" placeholder="Que cherchez vous?">
-                    <input type="text" placeholder="Saisiez une ville,...">
+                    <input type="text" name="recherche_mot_cle" placeholder="Que cherchez vous?">
+                    <input type="text" name="recherche_ville" placeholder="Saisiez une ville,...">
                     <button type="submit">Rechercher</button>
                 </form>
             </div>
@@ -113,7 +113,6 @@ function derniers_annonces()
         }
         ?>
        </div>
-       <a href='source/render/annonce_details.php?id=?'5> <p>tien</p></a>
     </div>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">

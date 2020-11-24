@@ -40,6 +40,35 @@ class SQLiteConnection {
         return $row;
     }
 
+    function recherche_annonce($titre, $categorie){
+        $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $requet_sql = "SELECT * FROM annonces WHERE titre LIKE '%$titre%' AND categorie = '$categorie'";
+        $stm = $pdo_3->query($requet_sql);
+        $row = $stm->fetchAll(PDO::FETCH_BOTH);
+        return $row;
+    }
+    function recherche_annonce_sans_categorie($titre){
+        $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $requet_sql = "SELECT * FROM annonces WHERE titre LIKE '%$titre%'";
+        $stm = $pdo_3->query($requet_sql);
+        $row = $stm->fetchAll(PDO::FETCH_BOTH);
+        return $row;
+    }
+    function recherche_annonce_sans_titre($categorie){
+        $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $requet_sql = "SELECT * FROM annonces WHERE categorie LIKE '%$categorie%'";
+        $stm = $pdo_3->query($requet_sql);
+        $row = $stm->fetchAll(PDO::FETCH_BOTH);
+        return $row;
+    }
+
+    function recherche_annonce_avec_limit($requet_sql){
+        $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $stm = $pdo_3->query($requet_sql);
+        $row = $stm->fetchAll(PDO::FETCH_BOTH);
+        return $row;
+    }
+
 
 }
 

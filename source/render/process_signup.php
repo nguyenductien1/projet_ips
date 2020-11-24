@@ -38,7 +38,7 @@ if (!$connect_class->check_database($username)) {
     echo "pseudo ok";
 } else {
     if (strlen($connect_class->check_database($username)['pseudo']) > 0) {
-        echo "Cet identifiant existe déjà. Veuillez choisir un autre nom d'utilisateur. <a href='javascript: history.go(-1)'>Trở lại</a>";
+        echo "Cet identifiant existe déjà. Veuillez choisir un autre nom d'utilisateur. <a href='javascript: history.go(-1)'>Retourner</a>";
         exit;
     }
 }
