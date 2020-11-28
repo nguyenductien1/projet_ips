@@ -147,7 +147,7 @@ foreach ($recherche_results as $result) {
             foreach ($results as &$result) {
                 if ($ville == get_municipality_by_coordinate($result['rdv_lat'], $result['rdv_lon']) || strlen($ville)==0){
                     echo '<div class="col-lg-6 col-md-6 col-sm-12">',
-                    '<a href="source/render/annonce_details.php?id=' . $result['id'] . '">' . '<h3 class="titre_annonce">',
+                    '<a href="annonce_details.php?id=' . $result['id'] . '">' . '<h3 class="titre_annonce">',
                     $result['titre'],
                     '</h3>' . '</a>',
                     '<div class="price_location">',
