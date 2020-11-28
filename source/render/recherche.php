@@ -39,10 +39,11 @@ if (strlen($categories) > 0 && strlen($mot_cle) > 0) {
 } elseif (strlen($categories) > 0 && strlen($mot_cle) == 0) {
     $recherche_results = $connect_class->recherche_annonce_sans_titre($categories);
 }
-  elseif (strlen($categories) == 0 && strlen($mot_cle) == 0) {
+  elseif (strlen($categories) == 0 && strlen($mot_cle) == 0 && strlen($ville)==0) {
     $requet_sql_non = "SELECT * FROM annonces WHERE categorie LIKE '%$categories%' AND titre LIKE '%$mot_cle%'";
     $recherche_results = $connect_class->recherche_annonce_avec_limit($requet_sql_non);
 }
+
 
 $total_records = 0;
 foreach ($recherche_results as $result) {
@@ -144,8 +145,8 @@ foreach ($recherche_results as $result) {
         <div class="row">
             <?php
             foreach ($results as &$result) {
-
-                echo '<div class="col-lg-6 col-md-6 col-sm-12">',
+                if ($ville == get_municipality_by_coordinate($result['rdv_lat'], $result['rdv_lon']) || strlen($ville)==0){
+                    echo '<div class="col-lg-6 col-md-6 col-sm-12">',
                     '<a href="source/render/annonce_details.php?id=' . $result['id'] . '">' . '<h3 class="titre_annonce">',
                     $result['titre'],
                     '</h3>' . '</a>',
@@ -169,6 +170,10 @@ foreach ($recherche_results as $result) {
                     ' width="200">
             </div>';
             }
+            else{echo '<p>No results</p>';}
+
+                }
+                
             ?>
         </div>
     </div>

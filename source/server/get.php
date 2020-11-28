@@ -47,6 +47,7 @@ class SQLiteConnection {
         $row = $stm->fetchAll(PDO::FETCH_BOTH);
         return $row;
     }
+    
     function recherche_annonce_sans_categorie($titre){
         $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
         $requet_sql = "SELECT * FROM annonces WHERE titre LIKE '%$titre%'";
@@ -69,6 +70,13 @@ class SQLiteConnection {
         return $row;
     }
 
+    function get_position_ville($ville_nom){
+        $pdo = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $requet_sql = "SELECT ville_longitude_deg, ville_latitude_deg FROM villes_france WHERE ville_nom_reel = '$ville_nom'";
+        $stm = $pdo->query($requet_sql);
+        $row = $stm->fetch(PDO::FETCH_BOTH);
+        return $row;
+    }
 
 }
 
