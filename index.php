@@ -85,8 +85,6 @@ function derniers_annonces()
 
             ?>
 
-
-
         </div>
         <div class="row">
             <form action="http://localhost/ProjetIPS/source/render/deposer_annonce.php" method="get">

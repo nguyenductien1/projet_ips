@@ -6,14 +6,15 @@ session_start();
 header('Content-Type: text/html; charset=UTF-8');
 include('../server/get.php');
 include('../server/config.php');
- 
+
 //Connecter à la base de données
- use source\server\SQLiteConnection;
- $connect_class = new SQLiteConnection();
+use source\server\SQLiteConnection;
+
+$connect_class = new SQLiteConnection();
 
 //Procedure pour se connecter
 if (isset($_POST['login'])) {
-    
+
     //Input
     $username = addslashes($_POST['txtUsername']);
     $password = addslashes($_POST['txtPassword']);
@@ -28,10 +29,9 @@ if (isset($_POST['login'])) {
     $password = md5($password);
 
     //Vérifier si le nom d'utilisateur existe  
-    if (!$connect_class->check_database($username)){
+    if (!$connect_class->check_database($username)) {
         echo "Ce nom d'utilisateur n'existe pas. Veuillez vérifier à nouveau. <a href='javascript: history.go(-1)'>Retourner</a>";
         exit;
-    
     }
 
     //Récupérez le mot de passe de la base de données
@@ -57,31 +57,35 @@ if (isset($_POST['login'])) {
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="CSS/login.css">
 </head>
 
 <body>
-    <form action='login.php?do=login' method='POST'>
-        <table cellpadding='0' cellspacing='0' border='1'>
-            <tr>
-                <td>
-                Nom d'utilisateur :
-                </td>
-                <td>
+    <div class="h-100 row align-items-center">
+        <div class="container">
+            <form action='login.php?do=login' method='POST'>
+                <div class="row col-lg-6">
+                    <label> Nom d'utilisateur :</label>
                     <input type='text' name='txtUsername' />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Mots de passe :
-                </td>
-                <td>
+                </div>
+                <div class="row col-lg-6">
+                    <label> Mots de passe :</label>
                     <input type='password' name='txtPassword' />
-                </td>
-            </tr>
-        </table>
-        <input type='submit' name="login" value='Se Connecter' />
-        <a href='signup.php' title='Se inscrire'>Se inscrire</a>
-    </form>
+                </div>
+                <div class="row col-lg-6">
+                    <input type='submit' name="login" value='Se Connecter' />
+                    <a href='signup.php' title='Se inscrire'>Se inscrire</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="source/geocoder/reverse.js"></script>
 </body>
 <footer>
     Duc Tien NGUYEN - 2020

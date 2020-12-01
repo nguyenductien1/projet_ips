@@ -77,6 +77,23 @@ class SQLiteConnection {
         $row = $stm->fetch(PDO::FETCH_BOTH);
         return $row;
     }
+    function recherche_ville_autocomplete($requet_sql){
+        $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $stm = $pdo_3->query($requet_sql);
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+    function get_annonce_by_user($requet_sql){
+        $pdo_3 = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $stm = $pdo_3->query($requet_sql);
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return $row;
+    }
+
+    function supprimer_annonce($requet_sql) {
+        $pdo = new PDO('sqlite:'. dirname(__FILE__, 3).('\data_base\bdd.db'));
+        $pdo->exec($requet_sql);
+    }
 
 }
 

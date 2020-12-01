@@ -11,26 +11,33 @@ $connect_class = new SQLiteConnection();
 header('Content-Type: text/html; charset=UTF-8');
 
 //query the database for entries containing the term 
-$ville = trim(strip_tags($_GET['recherche_autocomplete']));
+$ville = $_GET['mot_cle'];
 
-$requet_sql = "SELECT ville_nom_reel FROM villes_france WHERE ville_nom LIKE '%$ville%'";
+$requet_sql = "SELECT ville_nom_reel FROM villes_france WHERE ville_nom LIKE '$ville%' LIMIT 10";
 
 $result = $connect_class->recherche_ville_autocomplete($requet_sql);
 
-//array to return 
-$reply = array(); 
-$reply['query'] = $ville; 
-$reply['suggestions'] = array(); 
-$reply['data'] = array(); 
-
-foreach ($results as $row) //loop through the retrieved values 
-{ 
-    //Add this row to the reply 
-    $reply['suggestions'][]=htmlentities(stripslashes($row['value'])); 
-    $reply['data'][]=(int)$row['id']; 
-} 
-
+$result_villes = [];
+foreach ($result as $r) {
+ array_push($result_villes, $r["ville_nom_reel"]);
+}
 //format the array into json data 
-echo json_encode($reply); 
+//echo $_GET['mot_cle'];
+//echo json_encode($result_villes); 
+
+$output = '<ul class="list-unstyled">';		
+
+  		if (count($result_villes) > 0) {
+  			foreach ($result_villes as $ville_selected) {
+  				$output .= '<li>'.$ville_selected.'</li>';
+  			}
+  		}else{
+  			  $output .= '<li> City not Found</li>';
+  		}
+  		
+          $output .= '</ul>';
+          
+echo $output;
+
 
 ?>

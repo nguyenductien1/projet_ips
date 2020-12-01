@@ -7,65 +7,52 @@
 </head>
 
 <body>
-    <h1>Inscription pour les petites annonces</h1>
-    <form action="process_signup.php" method="POST">
-        <table cellpadding="0" cellspacing="0" border="1">
-            <tr>
-                <td>
-                Nom d'utilisateur :
-                </td>
-                <td>
-                    <input type="text" name="txtUsername" size="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Mots de passe :
-                </td>
-                <td>
-                    <input type="password" name="txtPassword" size="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Email :
-                </td>
-                <td>
-                    <input type="text" name="txtEmail" size="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Nom et prénom :
-                </td>
-                <td>
-                    <input type="text" name="txtFullname" size="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Date de Naissance :
-                </td>
-                <td>
-                    <input type="text" name="txtBirthday" size="50" />
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Sexe :
-                </td>
-                <td>
-                    <select name="txtSex">
-                        <option value=""></option>
-                        <option value="Nam">Male</option>
-                        <option value="Nu">Female</option>
-                    </select>
-                </td>
-            </tr>
-        </table>
-        <input type="submit" value="S'incrire" />
-        <input type="reset" value="Effacer" />
-    </form>
+
+    <div class="container">
+        <h1>Inscription pour les petites annonces</h1>
+        <form action="process_signup.php" method="POST">
+            <div>
+                <label for="txtUsername">Nom d'utilisateur :</label>
+                <input type="text" name="txtUsername" size="50" />
+            </div>
+            <div>
+                <label for="txtPassword">Mots de passe :</label>
+                <input type="password" name="txtPassword" size="50" />
+            </div>
+            <div>
+                <label for="txtEmail">Email :</label>
+                <input type="text" name="txtEmail" size="50" />
+            </div>
+            <div>
+                <label for="txtFullname"> Nom et prénom :</label>
+                <input type="text" name="txtFullname" size="50" />
+            </div>
+            <div>
+                <label for="txtBirthday">Date de Naissance :</label>
+                <input type="text" name="txtBirthday" size="50" />
+            </div>
+            <div>
+                <label for="txtSex">Sexe :</label>
+                <select name="txtSex">
+                    <option value=""></option>
+                    <option value="Nam">Male</option>
+                    <option value="Nu">Female</option>
+                </select>
+            </div>
+
+            <input type="submit" value="S'incrire" />
+            <input type="reset" value="Effacer" />
+        </form>
+    </div>
+
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="source/geocoder/reverse.js"></script>
+
 </body>
 <footer>
     Duc Tien NGUYEN - 2020
