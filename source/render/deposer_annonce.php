@@ -102,6 +102,7 @@ if (!isset($_SESSION['username']) && !$_SESSION['username']) {
             </form>
         </div>
     </div>
+    <div id="deposer_success"></div>
 
     <script src="js/image_process.js"></script>
 
@@ -121,8 +122,8 @@ if (!isset($_SESSION['username']) && !$_SESSION['username']) {
                     // ... Other options like success and etc
                     success: function(data) {
                         //Do stuff for ahed process....
+                        $("#deposer_success").append(data);
                         console.log(data);
-                        alert(data);
                     }
                 });
 

@@ -74,7 +74,7 @@ if (!empty($_FILES) && isset($_FILES['fileToUpload'])){
    
 if (deposer_annonce($depose_titre, $depose_categories, $depose_description, $depose_prix, $depose_photo, $depose_lat, $depose_lon, $date)=="ok"){
     echo  "Votre annonce a été déposé. <a href='http://localhost/ProjetIPS/source/render/mon_compte.php'>Retournez à votre page personel </a>";
-   echo '<meta http-equiv="refresh" content="10;URL=http://localhost/ProjetIPS/source/render/mon_compte.php" />';
+    echo '<meta http-equiv="refresh" content="2;URL=http://localhost/ProjetIPS/source/render/mon_compte.php" />';
 }
 
 function deposer_annonce($depose_titre, $depose_categories, $depose_description, $depose_prix, $depose_photo, $rdv_lat, $rdv_lon, $date){

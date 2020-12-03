@@ -32,12 +32,16 @@ $result = $connect_class->get_annonce_by_user($requet_sql);
 
 foreach ($result as $r) {
 if($r['titre']!=""){
+    echo '<div>';
     echo '<a href="annonce_details.php?id=' .$r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>';
     echo '<button id='. $r['id'] . ' class="supprimer" onclick="supprimer_annonces(this.id)">', 'Supprimer', '</button>';
+    echo '</div>';
 }
 else{
+    echo '<div>';
     echo '<a href="annonce_details.php?id=' .$r['id'] . '">' . '<h3 class="titre_annonce">', 'Non titre', '</h3>' . '</a>';
     echo '<button id='. $r['id'] . ' class="supprimer" onclick="supprimer_annonces(this.id)">', 'Supprimer', '</button>';
+    echo '</div>';
 }
 }
 

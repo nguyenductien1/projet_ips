@@ -13,7 +13,7 @@ header('Content-Type: text/html; charset=UTF-8');
 //query the database for entries containing the term 
 $ville = $_GET['mot_cle'];
 
-$requet_sql = "SELECT ville_nom_reel FROM villes_france WHERE ville_nom LIKE '$ville%' LIMIT 10";
+$requet_sql = "SELECT ville_nom_reel FROM villes_france WHERE ville_nom LIKE '$ville%' LIMIT 5";
 
 $result = $connect_class->recherche_ville_autocomplete($requet_sql);
 

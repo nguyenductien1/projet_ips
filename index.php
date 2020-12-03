@@ -5,6 +5,9 @@
 <head>
     <title>Petite Anonnce</title>
     <link rel="stylesheet" type="text/css" href="source/render/css_index.css">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
 </head>
 
@@ -62,7 +65,8 @@ function derniers_annonces()
                         <option>telephonie</option>
                     </select>
                     <input type="text" name="recherche_mot_cle" placeholder="Que cherchez vous?">
-                    <input type="text" id="recherche_autocomplete" name="recherche_ville" placeholder="Saisiez une ville ...">
+                    <input type="text" id="villes" name="recherche_ville" placeholder="Saisiez une ville ...">
+                    <div id="liste_villes"></div>
                     <button type="submit">Rechercher</button>
                 </form>
             </div>
@@ -84,13 +88,14 @@ function derniers_annonces()
             }
 
             ?>
+            <div class="row">
+                <form action="http://localhost/ProjetIPS/source/render/deposer_annonce.php" method="get">
+                    <button type="submit">Déposer un annonnece</button>
+                </form>
+            </div>
 
         </div>
-        <div class="row">
-            <form action="http://localhost/ProjetIPS/source/render/deposer_annonce.php" method="get">
-                <button type="submit">Déposer un annonnece</button>
-            </form>
-        </div>
+
 
     </div>
 
@@ -127,22 +132,57 @@ function derniers_annonces()
         </div>
     </div>
 
-    <script type="text/javascript">
-        a1 = $("#recherche_autocomplete").autocomplete({
-            serviceUrl: 'search_autocomplete.php', //tell the script where to send requests 
-            width: 448, //set width 
 
-            //callback just to show it's working 
-            onSelect: function(value, data) {
-                alert('You selected: ' + value + ', ' + data);
-            }
+    <style type="text/css">
+        ul {
+            margin-top: 0px;
+            background: #fff;
+            color: #000;
+        }
+
+        li {
+            padding: 12px;
+            cursor: pointer;
+            color: black;
+        }
+
+        li:hover {
+            background: #f0f0f0;
+        }
+    </style>
+
+    <script>
+        var mot_cle = $('#villes').val();
+        $("#villes").on("keyup", (function() {
+                var mot_cle = $('#villes').val();
+                if (mot_cle !== "") {
+                    $.get('../ProjetIPS/source/render/search_autocomplete.php', {
+                        mot_cle: mot_cle
+                    }, function(data) {
+                        $("#liste_villes").html(data);
+                        $("#liste_villes").fadeIn();
+                    })
+
+                } else {
+                    $("#liste_villes").html("");
+                    $("#liste_villes").fadeOut();
+                }
+
+            })
+
+        );
+
+        $(document).on("click", "li", function() {
+            $('#villes').val($(this).text());
+            $('#liste_villes').fadeOut("fast");
         });
     </script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="source/geocoder/reverse.js"></script>
+
+
 </body>
 <footer>
     Duc Tien NGUYEN - 2020

@@ -71,7 +71,7 @@ $annonce_details =  $connect_class->get_annonce_detail($_REQUEST["id"]);
 
     </div>
 
-    <div class="container">
+    <div class="container"  align:"center">
         <div class="row">
             <div class="col-lg-8 col-md-6 col-sm-12">
                 <img src=<?php echo 'http://localhost/ProjetIPS/' . ($annonce_details[0]['photo']); ?> width="500">
@@ -80,6 +80,7 @@ $annonce_details =  $connect_class->get_annonce_detail($_REQUEST["id"]);
                     <h3><?php echo ($annonce_details[0]['prix']) . "€"; ?></h3>
                     <img src="http://localhost/ProjetIPS/data_base/photos/position.jpg" ; width="20" height="20">
                     <p><?php echo get_municipality_by_coordinate($annonce_details[0]['rdv_lat'], $annonce_details[0]['rdv_lon']) ?></p>
+                    <p><?php echo ($annonce_details[0]['pseudo']) ?></p>
                 </div>
                 <h3>Description:</h3>
                 <p><?php echo ($annonce_details[0]['description']); ?></p>

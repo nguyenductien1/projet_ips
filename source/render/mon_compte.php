@@ -46,6 +46,9 @@ if (!isset($_SESSION['username']) && !$_SESSION['username']) {
     <!--- div droite -->
     <div id="droite" class="">
         <h3>Les élements à droite</h3>
+        <div id="mon_profil">
+            <
+        </div>
     </div>
 
 
@@ -64,7 +67,9 @@ if (!isset($_SESSION['username']) && !$_SESSION['username']) {
             if (confirm("Vous êtes sure?")) {
                 // your deletion code
                 $.get("supprimer_annonces_process.php", {annonce_id:click_id}, function(data) {
-                    console.log(data);
+                    
+                    $('#'+click_id).parent().remove();
+                        
                 })
             }
             return false;

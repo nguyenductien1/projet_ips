@@ -43,6 +43,10 @@ if (strlen($categories) > 0 && strlen($mot_cle) > 0) {
     $requet_sql_non = "SELECT * FROM annonces WHERE categorie LIKE '%$categories%' AND titre LIKE '%$mot_cle%'";
     $recherche_results = $connect_class->recherche_annonce_avec_limit($requet_sql_non);
 }
+elseif (strlen($categories) == 0 && strlen($mot_cle) == 0 && strlen($ville)!==0) {
+    $requet_sql_non = "SELECT * FROM annonces WHERE categorie LIKE '%$categories%' AND titre LIKE '%$mot_cle%'";
+    $recherche_results = $connect_class->recherche_annonce_avec_limit($requet_sql_non);
+}
 
 
 $total_records = 0;
@@ -66,7 +70,7 @@ foreach ($recherche_results as $result) {
         <div class="jumbotron row">
 
             <div class="col-lg-2 col-md-4 col-sm-12">
-                <img src="https://nhattao.com/styles/nhattao2019/logo.png" class="rounded" alt="Logo" width="100">
+               <a href="http://localhost/ProjetIPS/"> <img src="https://nhattao.com/styles/nhattao2019/logo.png"  class="rounded" alt="Logo" width="100"> </a>
             </div>
 
             <div class="text-center col-lg-8 col-sm-12">
@@ -87,7 +91,7 @@ foreach ($recherche_results as $result) {
             </div>
             <?php 
             if (isset($_SESSION['username']) && $_SESSION['username']){
-                echo '<a href=personalise_page.php>'.$_SESSION['username'].'</a>'.
+                echo '<a href=mon_compte.php>'.$_SESSION['username'].'</a>'.
                     '<form action="http://localhost/ProjetIPS/source/render/logout.php" method="post">
                     <button type="submit">Déconnecter</button>
                      </form>';
