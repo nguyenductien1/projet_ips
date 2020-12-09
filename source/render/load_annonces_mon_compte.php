@@ -24,25 +24,24 @@ $user = $_SESSION['username'];
 $nombre_per_page = 5;
 $page = $_GET['page'];
 settype($page, "int");
-$from = ($page-1)*$nombre_per_page;
+$from = ($page - 1) * $nombre_per_page;
 
 $requet_sql = "SELECT * FROM annonces WHERE pseudo='$user' ORDER BY date DESC LIMIT '$from', '$nombre_per_page'";
 
 $result = $connect_class->get_annonce_by_user($requet_sql);
 
 foreach ($result as $r) {
-if($r['titre']!=""){
-    echo '<div>';
-    echo '<a href="annonce_details.php?id=' .$r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>';
-    echo '<button id='. $r['id'] . ' class="supprimer" onclick="supprimer_annonces(this.id)">', 'Supprimer', '</button>';
-    echo '</div>';
-}
-else{
-    echo '<div>';
-    echo '<a href="annonce_details.php?id=' .$r['id'] . '">' . '<h3 class="titre_annonce">', 'Non titre', '</h3>' . '</a>';
-    echo '<button id='. $r['id'] . ' class="supprimer" onclick="supprimer_annonces(this.id)">', 'Supprimer', '</button>';
-    echo '</div>';
-}
+    if ($r['titre'] != "") {
+        echo '<div>';
+        echo '<a href="annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>';
+        echo '<button id=' . $r['id'] . ' class="supprimer" onclick="supprimer_annonces(this.id)">', 'Supprimer', '</button>';
+        echo '</div>';
+    } else {
+        echo '<div>';
+        echo '<a href="annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', 'Non titre', '</h3>' . '</a>';
+        echo '<button id=' . $r['id'] . ' class="supprimer" onclick="supprimer_annonces(this.id)">', 'Supprimer', '</button>';
+        echo '</div>';
+    }
 }
 
 

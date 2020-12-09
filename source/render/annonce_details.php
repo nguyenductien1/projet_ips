@@ -18,7 +18,11 @@ $annonce_details =  $connect_class->get_annonce_detail($_REQUEST["id"]);
         PA: <?php echo ($annonce_details[0]['titre']); ?>
     </title>
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css_details.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
 
 </head>
 
@@ -32,64 +36,121 @@ $annonce_details =  $connect_class->get_annonce_detail($_REQUEST["id"]);
         if ($address->country_code == "fr")
             return ($address->municipality);
         else
-            return ("Not In France: " + $address->country);
+            return ($address->country);
+        //echo $address->country;
     }
 
     ?>
 
-    <div class="container-fluid">
-        <div class="jumbotron row">
-
-            <div class="col-lg-2 col-md-4 col-sm-12">
-                <img src="https://nhattao.com/styles/nhattao2019/logo.png" class="rounded" alt="Logo" width="50">
-            </div>
-
-            <div class="text-center col-lg-8 col-sm-12">
-                <form action="recherche_anonce" method="post">
-                    <label>Categories</label>
-                    <select name="hall" id="hall" value="3">
-                        <option></option>
-                        <option>decoration</option>
-                        <option>automobile</option>
-                        <option>cuisine</option>
-                        <option>informatique</option>
-                        <option>téléphone</option>
-                    </select>
-                    <input type="text" placeholder="Que cherchez vous?">
-                    <input type="text" placeholder="Saisiez une ville,...">
-                    <button type="submit">Rechercher</button>
-                </form>
-            </div>
-
-            <div class="col-lg-2 col-sm-12">
-                <form action="sigin" method="get">
-                    <button type="submit">Se connecter</button>
-                </form>
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="container"  align:"center">
-        <div class="row">
-            <div class="col-lg-8 col-md-6 col-sm-12">
-                <img src=<?php echo 'http://localhost/ProjetIPS/' . ($annonce_details[0]['photo']); ?> width="500">
-                <h3><?php echo ($annonce_details[0]['titre']); ?></h3>
-                <div class="price_location">
-                    <h3><?php echo ($annonce_details[0]['prix']) . "€"; ?></h3>
-                    <img src="http://localhost/ProjetIPS/data_base/photos/position.jpg" ; width="20" height="20">
-                    <p><?php echo get_municipality_by_coordinate($annonce_details[0]['rdv_lat'], $annonce_details[0]['rdv_lon']) ?></p>
-                    <p><?php echo ($annonce_details[0]['pseudo']) ?></p>
+<nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="col-xs-3 col-sm-6 col-md-2 col-lg-1">
+                <div class="navbar-header">
+                    <a href="http://localhost/ProjetIPS/"> <img src="https://nhattao.com/styles/nhattao2019/logo.png" class="rounded" alt="Logo"> </a>
                 </div>
-                <h3>Description:</h3>
-                <p><?php echo ($annonce_details[0]['description']); ?></p>
-
             </div>
-            <div class="col-lg-8 col-md-6 col-sm-12" id="mapdiv" style="width: 600px; height: 400px;"></div>
+
+            <div class="col-md-6 col-lg-7 form-screen">
+                <form class="navbar-form navbar-left" action="http://localhost/ProjetIPS/source/render/recherche.php" method="post">
+                    <div class="form-group">
+                        <select class="form-control" name="recherche_categories" id="categories" placeholder="Search">
+                            <option></option>
+                            <option>decoration</option>
+                            <option>automobile</option>
+                            <option>cuisine</option>
+                            <option>informatique</option>
+                            <option>telephonie</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="recherche_mot_cle" placeholder="Que cherchez vous?">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="villes" name="recherche_ville" placeholder="Saisiez une ville ...">
+                        <div id="liste_villes"></div>
+                    </div>
+                    <span><button type="submit" class="btn btn-default glyphicon-glyphicon-search">Rechercher</button></span>
+                </form>
+            </div>
+            <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4">
+                <ul class="nav navbar-nav navbar-right content-left">
+                    <?php
+                    if (isset($_SESSION['username']) && $_SESSION['username']) {
+                        echo
+                            '<li class="guess"><form action="http://localhost/ProjetIPS/source/render/deposer_annonce.php" method="get">
+                            <button type="submit" class="btn btn-primary">Déposer</button></form></li>',
+                            '<li><span><a class="glyphicon glyphicon-user" href=http://localhost/ProjetIPS/source/render/mon_compte.php>' . $_SESSION['username'] . '</a></span></li>',
+                            '<li><form action="http://localhost/ProjetIPS/source/render/logout.php" method="post">
+                                        <span><button type="submit" class="btn btn-primary">Déconnecter</button></span>
+                                </form></li>';
+                    } else {
+                        echo
+                            '<li class="signin"><form action="http://localhost/ProjetIPS/source/render/deposer_annonce.php" method="get">
+                                <button type="submit" class="btn btn-primary">Déposer</button></form></li>',
+                            '<li><form action="http://localhost/ProjetIPS/source/render/signup.php" method="get">
+                                <button type="submit" class="btn btn-primary">Inscrire</button></form></li>',
+                            '<li><form action="http://localhost/ProjetIPS/source/render/login.php" method="get">
+                                <button type="submit" class="btn btn-primary">Se connecter</button>
+                            </form></li>';
+                    }
+
+                    ?>
+                </ul>
+                <a href="javascript:void(0);" class="icon" id="menu-bar">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-moblie">
+                <form class="navbar-form navbar-left" action="http://localhost/ProjetIPS/source/render/recherche.php" method="post">
+                    <div class="form-group">
+                        <select class="form-control" name="recherche_categories" id="categories" placeholder="Search">
+                            <option></option>
+                            <option>decoration</option>
+                            <option>automobile</option>
+                            <option>cuisine</option>
+                            <option>informatique</option>
+                            <option>telephonie</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="recherche_mot_cle" placeholder="Que cherchez vous?">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="villes" name="recherche_ville" placeholder="Saisiez une ville ...">
+                    </div>
+                    <button type="submit" class="btn btn-default">Rechercher</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <img class="image-principal" src=<?php echo 'http://localhost/ProjetIPS/' . ($annonce_details[0]['photo']); ?>>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <h3><?php echo ($annonce_details[0]['titre']); ?></h3>
+                    <p><?php echo ($annonce_details[0]['description']); ?></p>
+                    <div class="price_location">
+                        <h3><?php echo ($annonce_details[0]['prix']) . "€"; ?></h3>
+
+                        <div>
+                            <span><i class="fa fa-map-marker"></i></span>
+                            <span><?php echo get_municipality_by_coordinate($annonce_details[0]['rdv_lat'], $annonce_details[0]['rdv_lon']) ?></span>
+                        </div>
+
+                        <a><p><span><i>par </i></span><span id="contact_pseudo"><?php echo ($annonce_details[0]['pseudo']) ?></span></p></a>
+                        <div id="contact_infos"> </div>
+                        <button id="show_contact" class="btn btn-primary" style="display:block">Voir contact</button>
+                        <button id="hide_contact" class="btn btn-success" style="display:none">Manquer contact</button>
+
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="mapdiv"></div>
+            </div>
         </div>
     </div>
-
 
     <script src="http://www.openlayers.org/api/OpenLayers.js"></script>
     <?php
@@ -113,6 +174,32 @@ $annonce_details =  $connect_class->get_annonce_detail($_REQUEST["id"]);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="source/geocoder/reverse.js"></script>
+
+
+<script type="text/javascript">
+$('#show_contact').click(function(){
+    var pseudo = $('#contact_pseudo')[0].innerText;
+    $.get("contact_information.php",{pseudo:pseudo}, function(data){
+        $('#contact_infos').append(data);
+        $('#show_contact').hide();
+        $('#hide_contact').css('display', 'block');
+    })
+})
+$('#hide_contact').click(function(){
+    $('#contact_infos').children().remove();
+    $('#show_contact').show();
+    $('#hide_contact').css('display', 'none');
+})
+
+$("#menu-bar").on("click", function() {
+    if ($(".content-left").css('display') === "flex") {
+        $(".content-left").css("display", "none");
+    } else {
+        $(".content-left").css("display", "flex");
+    }
+});
+</script>
+
 </body>
 <footer>
     Duc Tien NGUYEN - 2020

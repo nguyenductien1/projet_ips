@@ -1,0 +1,22 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #17a2b8;
+    height: 100vh;
+}
+
+h2 {
+    padding-top: 60px;
+    text-align: center;
+}
+
+.form {
+    padding: 20px;
+}
+
+
+footer{
+    position: fixed;
+    bottom: 0;
+}

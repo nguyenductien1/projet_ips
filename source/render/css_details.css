@@ -1,9 +1,123 @@
-div.price_location h3{
-    display: inline-block;
+.navbar {
+    height: 70px;
 }
-div.price_location p{
-    display: inline-block;
+
+li {
+    padding: 12px;
+    cursor: pointer;
+    color: black;
 }
-div.price_location img{
-    display: inline-block;
+  
+.form-screen form {
+    margin-left: 35%;
+    margin-top: 18px;
 }
+
+.navbar-header img {
+    width: 80px;
+    margin-top: 10px;
+}
+
+.content-left {
+    margin-top: 6px;
+}
+
+.icon {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 25px;
+  }
+  
+.icon i {
+    font-size: 20px;
+}
+
+.form-moblie {
+    display: none;
+}
+
+#liste_villes{
+    position: absolute;
+    width: auto;
+    z-index: 999;
+    width: 195px;
+  }
+  
+.list-unstyled{
+    background-color: #fff;
+    border: 1px solid #cdcdcd;
+}
+
+.main-content{
+    margin-top: 50px;
+}
+
+.image-principal{
+    width: 500px;
+    height: 500px;
+}
+
+#contact_infos div{
+    margin-bottom: 5px;
+}
+
+#mapdiv{
+    width: 100%;
+    height: 400px;
+    margin-top: 50px !important;
+    padding-right: 15px !important;
+    padding-left: 15px !important;
+}
+@media screen and (max-width: 1680px) {
+    .form-screen form {
+        margin-left: 25%;
+    }
+}
+
+@media screen and (max-width: 1366px) {
+    .form-screen form {
+        margin-left: 25%;
+    }
+}
+@media screen and (max-width: 1366px) {
+    .form-screen form {
+        margin-left: 10%;
+        margin-top: 15px;
+    }
+
+    .navbar-header img {
+        width: 60px;
+        margin-top: 15px;
+    }
+}
+
+@media screen and (max-width: 567px) {
+
+    .image-principal {
+        max-width: 100%;
+        height: 400px;
+    }
+
+    .form-moblie {
+        display: block;
+    }
+
+    .form-screen {
+        display: none;
+    }
+
+    .content-left {
+        display: none;
+    }
+
+    .icon {
+        display: block;
+    }
+
+    a.icon:focus .content-left{
+        display: block;
+    }
+
+}
+  

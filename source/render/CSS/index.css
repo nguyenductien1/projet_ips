@@ -1,0 +1,136 @@
+.navbar {
+  height: 70px;
+}
+.content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.content {
+  position: relative;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.titre_annonce {
+  margin-top: unset;
+}
+.photo {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 100%;
+}
+
+.photo img {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  margin: auto;
+}
+
+.price_location span {
+  margin-left: 5px;
+}
+.margin-5 {
+  margin-bottom: 5px;
+}
+
+.margin-10 {
+  margin-bottom: 10px;
+}
+
+.form-screen form {
+  margin-left: 35%;
+  margin-top: 18px;
+}
+
+.navbar-header img {
+  width: 80px;
+  margin-top: 10px;
+}
+
+.user-login{
+  margin-top: 8px;
+}
+
+.content-left {
+  margin-top: 6px;
+}
+
+.icon {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 25px;
+}
+
+.icon i {
+  font-size: 20px;
+}
+
+.form-moblie {
+  display: none;
+}
+
+#liste_villes{
+  position: absolute;
+  width: auto;
+  z-index: 999;
+  width: 195px;
+}
+
+.list-unstyled{
+  background-color: #fff;
+  border: 1px solid #cdcdcd;
+}
+
+@media screen and (max-width: 1680px) {
+    .form-screen form {
+      margin-left: 25%;
+    }
+}
+@media screen and (max-width: 1366px) {
+  .form-screen form {
+    margin-left: 10%;
+    margin-top: 15px;
+  }
+
+  .navbar-header img {
+    width: 60px;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 567px) {
+  .titre_annonce {
+    font-size: 16px;
+  }
+
+  .form-moblie {
+    display: block;
+  }
+
+  .form-screen {
+    display: none;
+  }
+
+  .content-left {
+    display: none;
+  }
+
+  .icon {
+    display: block;
+  }
+
+  a.icon:focus .content-left{
+    display: block;
+  }
+
+}

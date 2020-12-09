@@ -9,7 +9,7 @@ class SQLiteConnection {
         $pdo = new PDO('sqlite:'. Config::PATH_TO_SQLITE_FILE);
         // requête de sélection 
         $requeteSQL = "SELECT * FROM(
-                        SELECT * FROM annonces ORDER BY date DESC LIMIT 4)dernierannonce
+                        SELECT * FROM annonces ORDER BY date DESC LIMIT 8)dernierannonce
                         ORDER BY date DESC";
         // exécution de la requête
         $stm = $pdo->query($requeteSQL);

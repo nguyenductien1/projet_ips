@@ -57,29 +57,31 @@ if (isset($_POST['login'])) {
 <head>
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="CSS/login.css">
 </head>
 
 <body>
-    <div class="h-100 row align-items-center">
-        <div class="container">
-            <form action='login.php?do=login' method='POST'>
-                <div class="row col-lg-6">
-                    <label> Nom d'utilisateur :</label>
-                    <input type='text' name='txtUsername' />
+        <div class="login-box">
+            <form class="form" action='login.php?do=login' method='POST'>
+                <div class="form-group">
+                    <label for="username" class="text-info"> Nom d'utilisateur :</label>
+                    <input type='text' name='txtUsername' id="username" class="form-control" requried/>
                 </div>
-                <div class="row col-lg-6">
-                    <label> Mots de passe :</label>
-                    <input type='password' name='txtPassword' />
+                <div class="form-group">
+                    <label for="password" class="text-info"> Mots de passe :</label>
+                    <input type='password' name='txtPassword'  id="password" class="form-control" requried/>
                 </div>
-                <div class="row col-lg-6">
-                    <input type='submit' name="login" value='Se Connecter' />
-                    <a href='signup.php' title='Se inscrire'>Se inscrire</a>
+                <div class="form-group">
+                    <input class="btn btn-primary" type='submit' name="login" value='Se Connecter' />
+                </div>
+
+                <div class="register-link text-left">
+                    <a href='signup.php' class="text-info" title='Se inscrire'>Se inscrire</a>
                 </div>
             </form>
         </div>
 
-    </div>
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
