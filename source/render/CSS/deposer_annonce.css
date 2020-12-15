@@ -11,6 +11,23 @@
   margin-top: 18px;
 }
 
+ul {
+    margin-top: 0px;
+    background: #fff;
+    color: #000;
+}
+
+li {
+    padding: 12px;
+    cursor: pointer;
+    color: black;
+}
+
+li:hover {
+    background: #f0f0f0;
+}
+
+
 .navbar-header img {
   width: 80px;
   margin-top: 10px;

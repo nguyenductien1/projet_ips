@@ -13,6 +13,16 @@
   margin-bottom: 16px;
 }
 
+footer{
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: red;
+   color: white;
+   text-align: center;
+}
+
 .titre_annonce {
   margin-top: unset;
 }
@@ -85,6 +95,26 @@
   z-index: 999;
   width: 195px;
 }
+#liste_villes_m{
+  position: absolute;
+  width: auto;
+  z-index: 999;
+  width: 195px;
+}
+
+#liste_titres{
+  position: absolute;
+  width: auto;
+  z-index: 999;
+  width: 195px;
+}
+
+body{
+  padding: 2rem 0rem;
+}
+img.img-fluid {
+  width: 50px;
+}
 
 .list-unstyled{
   background-color: #fff;
@@ -133,4 +163,20 @@
     display: block;
   }
 
+}
+
+ul {
+  margin-top: 0px;
+  background: #fff;
+  color: #000;
+}
+
+li {
+  padding: 12px;
+  cursor: pointer;
+  color: black;
+}
+
+li:hover {
+  background: #f0f0f0;
 }
