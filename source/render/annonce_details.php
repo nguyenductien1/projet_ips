@@ -131,6 +131,7 @@ $annonce_details =  $connect_class->get_annonce_detail($_REQUEST["id"]);
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <h3><?php echo ($annonce_details[0]['titre']); ?></h3>
+                    <h4><?php echo ($annonce_details[0]['date']); ?></h4>
                     <p><?php echo ($annonce_details[0]['description']); ?></p>
                     <div class="price_location">
                         <h3><?php echo ($annonce_details[0]['prix']) . "€"; ?></h3>

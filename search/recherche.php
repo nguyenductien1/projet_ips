@@ -46,58 +46,74 @@ foreach ($result as $r) {
     if ($ville !='' && $ville==get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon'])){
 
         if ($r['titre'] != "") {
-            echo '<li class="list-group-item d-flex justify-content-between align-items-center">'.
-                '<a href="../ProjetIPS/source/render/annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>'.
-                '<h4>'.$r['prix'].'€'.'</h4>'.
-                '<i class="fa fa-map-marker">','</i>' .
-                '<span>'.
-                    get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon']).
-                '</span>'.
-              '<div class="image-parent">
-                  <img src='.$r['photo'].' class="img-fluid" alt="quixote">
-              </div>
-            </li>';
+            echo '<div class="col-12 col-sm-6 col-lg-4 search">'.
+                    '<div class="search-element-content">'.
+                        '<div class="search-content col-12 col-sm-8 col-lg-8">'.
+                            '<a href="../ProjetIPS/source/render/annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>'.
+                            '<h4>'.$r['prix'].'€'.'</h4>'.
+                            '<i class="fa fa-map-marker">','</i>' .
+                            '<span>'.
+                                get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon']).
+                            '</span>'.
+                        '</div>'.
+                        '<div class="image-parent col-12 col-sm-4 col-lg-4">
+                            <img src='.$r['photo'].' class="img-fluid" alt="quixote">
+                        </div>
+                    </div>
+            </div>';
         } else {
-            echo '<li class="list-group-item d-flex justify-content-between align-items-center">'.
-                '<a href="../ProjetIPS/source/render/annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>'.
-                '<h4>'.$r['prix'].'€'.'</h4>'.
-                '<i class="fa fa-map-marker">','</i>' .
-                '<span>'.
-                    get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon']).
-                '</span>'.
-              '<div class="image-parent">
-                    <img src='.$r['photo'].' class="img-fluid" alt="quixote">
-              </div>
-            </li>';
+            echo '<div class="col-12 col-sm-6 col-lg-4 search">'.
+                    '<div class="search-element-content">'.
+                        '<div class="search-content col-12 col-sm-8 col-lg-8">'.
+                            '<a href="../ProjetIPS/source/render/annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>'.
+                            '<h4>'.$r['prix'].'€'.'</h4>'.
+                            '<i class="fa fa-map-marker">','</i>' .
+                            '<span>'.
+                                get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon']).
+                            '</span>'.
+                        '</div>'.
+                        '<div class="image-parent col-12 col-sm-4 col-lg-4">
+                                <img src='.$r['photo'].' class="img-fluid" alt="quixote">
+                        </div>
+                    </div>
+                </div>';
         }
 
     }
     else if ($ville ==''){
 
         if ($r['titre'] != "") {
-            echo '<li class="list-group-item d-flex justify-content-between align-items-center">'.
+            echo '<div class="col-12 col-sm-6 col-lg-4 search">'.
+                '<div class="search-element-content">'.
+                '<div class="search-content col-12 col-sm-8 col-lg-8">'.
                 '<a href="../ProjetIPS/source/render/annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>'.
                 '<h4>'.$r['prix'].'€'.'</h4>'.
                 '<i class="fa fa-map-marker">','</i>' .
                 '<span>'.
                     get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon']).
                 '</span>'.
-              '<div class="image-parent">
+                '</div>'.
+              '<div class="image-parent col-12 col-sm-4 col-lg-4">
                   <img src='.$r['photo'].' class="img-fluid" alt="quixote">
               </div>
-            </li>';
+              </div>
+            </div>';
         } else {
-            echo '<li class="list-group-item d-flex justify-content-between align-items-center">'.
+            echo '<div class="col-12 col-sm-6 col-lg-4 search">'.
+                '<div class="search-element-content">'.
+                '<div class="search-content col-12 col-sm-8 col-lg-8">'.
                 '<a href="../ProjetIPS/source/render/annonce_details.php?id=' . $r['id'] . '">' . '<h3 class="titre_annonce">', $r['titre'], '</h3>' . '</a>'.
                 '<h4>'.$r['prix'].'€'.'</h4>'.
                 '<i class="fa fa-map-marker">','</i>' .
                 '<span>'.
                     get_address_by_coordinates($r['rdv_lat'], $r['rdv_lon']).
                 '</span>'.
-              '<div class="image-parent">
+                '</div>'.
+              '<div class="image-parent col-12 col-sm-4 col-lg-4">
                     <img src='.$r['photo'].' class="img-fluid" alt="quixote">
               </div>
-            </li>';
+              </div>
+            </div>';
         }
 
     }

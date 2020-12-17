@@ -69,10 +69,10 @@ function retourner() {
 }
 
 function search_ville() {
-  var mot_cle = document.getElementById("villes1").value;
+  var mot_cle = document.getElementById("edit_ville").value;
   if (mot_cle !== "") {
     $.get(
-      "../ProjetIPS/search/process_search_ville.php",
+      "http://localhost/ProjetIPS/search/process_search_ville.php",
       {
         mot_cle: mot_cle,
       },

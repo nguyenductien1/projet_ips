@@ -59,8 +59,8 @@ li {
 }
 
 .navbar-header img {
-  width: 80px;
-  margin-top: 10px;
+  width: 60px;
+  margin-top: 2px;
 }
 
 .user-login{
@@ -111,7 +111,7 @@ li {
 
   .navbar-header img {
     width: 60px;
-    margin-top: 15px;
+    margin-top: 2px;
   }
 }
 

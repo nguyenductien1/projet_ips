@@ -53,7 +53,7 @@ function derniers_annonces()
         <div class="container-fluid">
             <div class="col-xs-3 col-sm-6 col-md-2 col-lg-1">
                 <div class="navbar-header">
-                    <a href="http://localhost/ProjetIPS/"> <img src="https://nhattao.com/styles/nhattao2019/logo.png" class="rounded" alt="Logo"> </a>
+                    <a href="http://localhost/ProjetIPS/"> <img src="../ProjetIPS/data_base/photos/annoces.jpg" class="rounded" alt="Logo"> </a>
                 </div>
             </div>
 
@@ -143,6 +143,7 @@ function derniers_annonces()
                     '<div class="margin-10">',
                     '<a href="source/render/annonce_details.php?id=' . $annonce['id'] . '">' . '<h3 class="titre_annonce">', $annonce['titre'], '</h3>' . '</a>',
                     '<h3>',$annonce['prix'],'€</h3>',
+                    '<h5>',$annonce['date'].'</h5>',
                     '<div class="price_location margin-5">',
                     '<i class="fa fa-map-marker">','</i>' .
                     '<span>',
@@ -162,15 +163,13 @@ function derniers_annonces()
     </div>
     <div class="container" id='resultat_recherche' >
         <div class="row">
-            <div class="col-12 col-sm-8 col-lg-5">
-                <h6 class="text-muted">Résultat de recherche</h6> 
-                    <ul id=recherche_index  class="list-group">
-
-                    </ul>
+            <div class="col-12 col-sm-12 col-lg-12 text-center">
+                <h4 class="text-muted">Résultat de recherche</h4> 
+                <div id="recherche_index"></div>
                 </div>
             </div>
-        <div class="row">
-            <button type="button" id="afficher_plus">Voir plus</button>
+        <div class="row text-center">
+            <button type="button" id="afficher_plus" class="btn btn-primary">Voir plus</button>
         </div>
         
     </div>

@@ -36,18 +36,18 @@ if (!isset($_SESSION['username']) && !$_SESSION['username']) {
     <div class="container-fluid">
         <div class="col-xs-3 col-sm-6 col-md-2 col-lg-1">
             <div class="navbar-header">
-                <a href="http://localhost/ProjetIPS/"> <img src="https://nhattao.com/styles/nhattao2019/logo.png" class="rounded" alt="Logo"> </a>
+                <a href="http://localhost/ProjetIPS/"> <img src="../data_base/photos/annoces.jpg" class="rounded" alt="Logo"> </a>
             </div>
         </div>
 
-        <div class="col-xs-9 col-sm-6 col-md-4 col-lg-4">
+        <div class="col-xs-9 col-sm-6 col-md-10 col-lg-11">
             <ul class="nav navbar-nav navbar-right content-right">
                 <?php
                 if (isset($_SESSION['username']) && $_SESSION['username']) {
                     echo
                         '<li class="guess"><form action="../source/render/deposer_annonce.php" method="get">
                         <button type="submit" class="btn btn-primary">Déposer</button></form></li>',
-                        '<li class="user-login"><span><a class="glyphicon glyphicon-user" href=../source/render/mon_compte.php>' . $_SESSION['username'] . '</a></span></li>',
+                        '<li class="user-login"><span><a class="glyphicon glyphicon-user" href=../mon_compte/mon_compte.php>' . $_SESSION['username'] . '</a></span></li>',
                         '<li><form action="../login/logout.php" method="post">
                                     <span><button type="submit" class="btn btn-primary">Déconnecter</button></span>
                             </form></li>';
